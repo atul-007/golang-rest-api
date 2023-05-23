@@ -1,11 +1,9 @@
 package models
 
-type User struct {
-	ID        string `json:"id"`
-	CreatedAt string `json:"createdAt"`
-	Name      string `json:"name"`
-}
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
-func (*User) GetBaseUrl() string {
-	return "https://645e3aae12e0a87ac0eadd29.mockapi.io/api"
+type Netflix struct {
+	ID      primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Movie   string             `json:"movie,omitempty"`
+	Watched bool               `json:"watched,omitempty"`
 }
