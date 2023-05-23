@@ -8,39 +8,10 @@ import (
 	"github.com/atul-007/golang-rest-api/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const connectionstring = "mongodb+srv://atulranjan789:atulranjan@cluster0.ebjtzlx.mongodb.net/?retryWrites=true&w=majority"
-const dbname = "netflix"
-const colname = "watchlist"
-
-// most important
-var collection *mongo.Collection
-
-//collection=mongodb.Init()
-
-//connect with mongodb
-
 func init() {
-
-	//client option
-	clientoption := options.Client().ApplyURI(connectionstring)
-
-	//connect with mongodb
-	client, err := mongo.Connect(context.TODO(), clientoption)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println("Mongodb connection sucess")
-
-	collection = client.Database(dbname).Collection(colname)
-
-	//collection instance
-	fmt.Println("collection instance is ready ")
+	Init()
 }
 
 //mongodb helper  -file
