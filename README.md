@@ -1,2 +1,2 @@
 # golang-rest-api
-"Hello World" for rest apis using golang
+"Netflix" inspired rest-api in golang 
