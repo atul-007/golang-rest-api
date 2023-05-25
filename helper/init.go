@@ -4,12 +4,13 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 
+	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const connectionstring = "mongodb+srv://atulranjan789:atulranjan@cluster0.ebjtzlx.mongodb.net/?retryWrites=true&w=majority"
 const dbname = "netflix"
 const colname = "watchlist"
 
@@ -17,6 +18,12 @@ const colname = "watchlist"
 var collection *mongo.Collection
 
 func Init() {
+	err := godotenv.Load() //to load the env file
+	if err != nil {
+		log.Fatalf("Some error occured. Err: %s", err)
+	}
+	connectionstring := os.Getenv("connect")
+
 	clientoption := options.Client().ApplyURI(connectionstring)
 
 	//connect with mongodb
